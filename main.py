@@ -18,6 +18,16 @@ def hello(name,score):
     return render_template('name.html', name=name, marks=score)
 '''
 
+words = [{"English":"one","Miwok":"lutti"},
+         {"English":"two","Miwok":"otikko"},
+         {"English":"one","Miwok":"lutti"},
+        ]
+        
+languages = ["English", "Ainu"]
+
+import phrases
+words = phrases.phrases
+
 @app.route('/phrases')#,methods=['GET']) 
 def phrases():
     return render_template('template.html',
@@ -31,16 +41,10 @@ def map():
     return render_template('template.html',
                 content = render_template('map.html'))
 
-words = [{"English":"one","Miwok":"lutti"},
-         {"English":"two","Miwok":"otikko"},
-         {"English":"one","Miwok":"lutti"},
-        ]
         
 @app.route('/api',methods=['POST', 'GET']) 
 def api():
     return str(words)
-languages = ["English", "Miwok"]
-
 
 @app.route('/api/languages',methods=['POST', 'GET']) 
 def apiLang():

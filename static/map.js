@@ -1,16 +1,4 @@
-var map = AmCharts.makeChart("chartdiv", {
-  type: "map",
-  "theme": "none",
-  pathToImages: "https://www.amcharts.com/lib/3/images/",
-
-  colorSteps: 10,
-
-  dataProvider: {
-    map: "worldLow",
-    zoomLatitude: 46.214708,
-    zoomLevel: 1,
-    zoomLongitude: 10.347274,
-    areas: [{
+areas = [{
       id: "ES",
       info: "Spain (Listeni/ˈspeɪn/; Spanish: España [esˈpaɲa] ( listen)), officially the Kingdom of Spain (Spanish: Reino de España),[d][e] is a sovereign state and a member state of the European Union. It is located on the Iberian Peninsula in southwestern Europe. Its mainland is bordered to the south and east by the Mediterranean Sea except for a small land boundary with Gibraltar; to the north and north east by France, Andorra, and the Bay of Biscay; and to the west and northwest by Portugal and the Atlantic Ocean. It is one of three countries—France and Morocco are the other two—to have both Atlantic and Mediterranean coastlines. Spain's 1,214 km (754 mi) border with Portugal is the longest uninterrupted border within the European Union."
     }, {
@@ -35,6 +23,20 @@ var map = AmCharts.makeChart("chartdiv", {
     id: "MY",
       info: "Belgium (Listeni/ˈbɛldʒəm/; Dutch: België; French: Belgique; German: Belgien), officially the Kingdom of Belgium, is a federal monarchy in Western Europe. It is a founding member of the European Union and hosts the EU's headquarters as well as those of several other major international organisations such as NATO.[nb 1] Belgium covers an area of 30,528 square kilometres (11,787 sq mi), and it has a population of about 11 million people."
     }]
+
+var map = AmCharts.makeChart("chartdiv", {
+  type: "map",
+  "theme": "none",
+  pathToImages: "https://www.amcharts.com/lib/3/images/",
+
+  colorSteps: 10,
+
+  dataProvider: {
+    map: "worldLow",
+    zoomLatitude: 46.214708,
+    zoomLevel: 1,
+    zoomLongitude: 10.347274,
+    areas: areas
   },
 
   areasSettings: {
@@ -44,6 +46,7 @@ var map = AmCharts.makeChart("chartdiv", {
 
 });
 
-map.addListener("rollOverMapObject", function(event) {
-  document.getElementById("info").innerHTML = '<p><b>' + event.mapObject.title + '</b></p><p>' + event.mapObject.info + '</p>';
+map.addListener("clickMapObject",//rollOverMapObject", 
+function(event) {
+  document.getElementById("info").innerHTML = '<h2>' + event.mapObject.title + '</h2><p>' + event.mapObject.info + '</p>';
 });

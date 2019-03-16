@@ -1,4 +1,4 @@
-languages = ["English","Miwok"]
+languages = ["English","Ainu"]
 wordMap = []
 
 counter = 0
@@ -9,6 +9,8 @@ while run:
     for l in languages:
         word[l]=input(l+" word?: ")
         if word[l]=="":
+            break
+        if word[l]=="-1":
             run = False
             break
     if run:wordMap.append(word)

@@ -13,7 +13,14 @@
           font-size: 3.5rem;
         }
       }
-      .container{padding-top: 60px;}
+      #search-phrase,#search-language{
+          width:20em;
+      }
+      .form-inline { 
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+        }
     </style>
   
 <!-- Begin page content -->
@@ -21,9 +28,15 @@
   <div class="container">
     <h1 class="mt-5">Phrases</h1>
     <p class="lead">English phrases and their translations in indigenous languages</p>
+    
+  <form class="form-inline" action="/search" onsubmit="return searchCheck();" method="post">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search phrase" name="phrase" id="search-phrase">
+        <input class="form-control mr-sm-2" type="text" placeholder="Language" name="language" id="search-language">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+<button type="button" class="btn btn-light" id="minimisephrase">-</button><br>
   
-  
-  <table class="table">
+  <table class="table" id="phraseslist">
   <thead>
 
     <tr>

@@ -34,7 +34,17 @@
         }
       }
     
-    .container{padding-top: 60px;}
+    .blackened{
+          color:white;
+          background-color:black;
+          padding-top:2em;
+          padding-bottom:2em;
+      }
+      footer{
+          padding-top:2em;
+          padding-bottom:2em;
+      }
+
     </style>
     
   </head>
@@ -85,37 +95,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
-<script>
-    function searchCheck(){
-        if (document.getElementById("search-phrase").value == ""){
-            alert("Please enter a phrase to search for");
-            return false
-        }
-        if (document.getElementById("search-language").value == ""){
-            alert("Please enter a language");
-            return false
-        }
-        return true
-    }
-    data={};
-    function test(text){
-        url = "https://api.susi.ai/susi/chat.json";//?timezoneOffset=-480&q="+text;
-        //alert(text);    
-        console.log("test");
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-             if (this.readyState == 4 && this.status == 200) {
-                 //alert(this.responseText);
-                 data = this.responseText;
-                 document.getElementById("intro").innerHTML = JSON.parse(data).answers[0].actions[0].expression; 
-             }
-        };
-        xhttp.open("POST", url, true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send("?timezoneOffset=-480&q="+decodeURI(text));
-
-    };
-</script>
 
 </body></html>
