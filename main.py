@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
-
+import json
 
 @app.route('/')
 def index():
@@ -85,20 +85,11 @@ def apiSUSI():
         givenPhrase = request.args.get('phrase')
         givenLanguage = request.args.get('language')
     found =  findPhrase(givenPhrase, givenLanguage)
-    if found == -1: return "Sorry, I Currently do not support this language."
-    elif found == -2: return "Sorry, I currently do not know this phrase"
-    else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
+    if found == -1: return json.dumps({"ans":"Sorry, I Currently do not support this language."})
+    elif found == -2: return json.dumps({"ans":"Sorry, I currently do not know this phrase"})
+    else: return json.dumps({"ans":"The phrase "+givenPhrase+" in "+givenLanguage+" is "+found})
 
-
-@app.route('/ai/susi/get')
-def apiSUSIGet():
-    givenPhrase = request.args.get('phrase')
-    givenLanguage = request.args.get('language')
-    found =  findPhrase(givenPhrase, givenLanguage)
-    if found == -1: return "Sorry, I Currently do not support this language."
-    elif found == -2: return "Sorry, I currently do not know this phrase"
-    else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
-    
+\
 '''  
 import sys
 try:
