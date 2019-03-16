@@ -76,16 +76,29 @@ def searchQuery():
 
 
 #curl -d "language=Miwok&phrase=two" -X POST localhost:5000/api/susi
-@app.route('/api/susi',methods=['POST']) 
+@app.route('/api/susi', methods=['POST', 'GET']) 
 def apiSUSI():
     if request.method=='POST':
         givenPhrase = request.form['phrase']
         givenLanguage = request.form['language']
+    if request.method=='GET':
+        givenPhrase = request.args.get('phrase')
+        givenLanguage = request.args.get('language')
     found =  findPhrase(givenPhrase, givenLanguage)
     if found == -1: return "Sorry, I Currently do not support this language."
     elif found == -2: return "Sorry, I currently do not know this phrase"
     else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
 
+
+@app.route('/ai/susi/get')
+def apiSUSIGet():
+    givenPhrase = request.args.get('phrase')
+    givenLanguage = request.args.get('language')
+    found =  findPhrase(givenPhrase, givenLanguage)
+    if found == -1: return "Sorry, I Currently do not support this language."
+    elif found == -2: return "Sorry, I currently do not know this phrase"
+    else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
+    
 '''  
 import sys
 try:
