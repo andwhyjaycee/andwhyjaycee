@@ -80,7 +80,8 @@ def apiSUSI():
     elif found == -2: return "Sorry, I currently do not know this phrase"
     else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
             
-
+import os
 if __name__ == '__main__':
-        app.run( port=33507, debug=True, use_reloader=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run( port=port, debug=True, use_reloader=True)
 #app.run()#debug=True, host='0.0.0.0')
