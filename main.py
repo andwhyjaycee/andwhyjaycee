@@ -51,12 +51,15 @@ def apiLang():
     return str(languages)
 
 def findPhrase(givenPhrase, givenLanguage):
-    if givenLanguage not in languages:
+    givenPhrase = givenPhrase.lower()
+    givenLanguage = givenLanguage.lower()
+    if givenLanguage not in [l.lower() for l in languages]:
         return -1
     for group in words:
         for lang, phrase in group.items():
-            if givenPhrase==phrase:
-                return group[givenLanguage]
+            lphrase = phrase.lower()
+            if givenPhrase==lphrase:
+                return group[givenLanguage[0].upper()+givenLanguage[1:]]
     return -2
 
 @app.route('/search',methods=['POST']) 
