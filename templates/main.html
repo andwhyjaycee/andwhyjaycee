@@ -1,0 +1,57 @@
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Hi</h1>
+      <p id="intro">This is a test for the UNESCO FOSSASIA Hackathon in Singapore 2019</p>
+      <p><a class="btn btn-primary btn-lg" href="/" role="button">Learn more »</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Learn</h2>
+        <p>Start knowing some phrases in indigenous languages</p>
+        <p><a class="btn btn-secondary" href="/phrases" role="button">Get started</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Why</h2>
+        <p>Understand why we would do this.</p>
+        <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p></p>
+        <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+<script>
+    function test(text){
+        url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text;
+        alert(text);    
+        console.log("test");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+                 alert(this.responseText);
+                 document.getElementById("intro").innerHTML = JSON.stringify(this.responseText); 
+             }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send("Your JSON Data Here");
+
+    };
+</script>
+
