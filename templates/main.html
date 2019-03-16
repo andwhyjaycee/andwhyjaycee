@@ -1,7 +1,18 @@
+<style>
+    .jumbotron{
+        color: white;
+        background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, red, yellow);
+        }  
+#chartdiv{
+   //width:100em;
+    height:40em;
+}
+</style>
 
 <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <!-- Main jumbotron for a primary marketing message or call to action -->    
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Hi</h1>
@@ -14,44 +25,37 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-4">
-        <h2>Learn</h2>
+        <h2>Why</h2>
         <p>Start knowing some phrases in indigenous languages</p>
         <p><a class="btn btn-secondary" href="/phrases" role="button">Get started</a></p>
       </div>
       <div class="col-md-4">
-        <h2>Why</h2>
+        <h2>Where</h2>
         <p>Understand why we would do this.</p>
         <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
       </div>
       <div class="col-md-4">
-        <h2>Heading</h2>
+        <h2>What</h2>
         <p></p>
         <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
       </div>
     </div>
+    </div>
+    
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<div id="chartdiv"></div>
+<div id="info">
+  <p>This is an information that is displayed when the page loads</p>
+  <p>Hover on any highlighted country to display it's description</p>
+</div>
+   <!-- /container -->
+  
 
-    <hr>
 
-  </div> <!-- /container -->
 
 </main>
 
-<script>
-    function test(text){
-        url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text;
-        alert(text);    
-        console.log("test");
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-             if (this.readyState == 4 && this.status == 200) {
-                 alert(this.responseText);
-                 document.getElementById("intro").innerHTML = JSON.stringify(this.responseText); 
-             }
-        };
-        xhttp.open("POST", url, true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send("Your JSON Data Here");
-
-    };
-</script>
+<script type="text/javascript" src="{{ url_for('static', filename='map.js') }}"></script>
 
