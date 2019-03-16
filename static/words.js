@@ -1,24 +1,6 @@
-data={};
-function RESTAPI(text){
-        url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q=hi"//+encodeURI(text);
-        alert(text);    
-        //console.log("test");
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-             if (this.readyState == 4 && this.status == 200) {
-                 alert();
-                 data = JSOH.parse(this.responseText);
-             }
-        };
-        xhttp.open("POST", url, true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send();//"Your JSON Data Here");
-
-    };
-    
 function minimise(){
     if (document.getElementById("minimisephrase").innerHTML == "+"){
-        document.getElementById("phraseslist").style.display = "";
+        document.getElementById("phraseslist").style.dsplay = "";
         document.getElementById("minimisephrase").innerHTML = "-";
     }
     else if (document.getElementById("minimisephrase").innerHTML == "-"){
@@ -41,10 +23,22 @@ function searchCheck(){
     return true
 }
 data={};
+SUSISkill=`
+What is * in * | * in * 
+!console:$ans$
+{
+  "url":"http://andwhyjaycee.herokuapp.com/api/susi?language=$2$&phrase=$1$",
+  "path":"$.ans"
+}
+eol
+`;
+//Use URL encoder to encode SUSI Skill
 function test(text){
-    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text;//hi";//"https://api.susi.ai/susi/chat.json";
+    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+encodeURI(text)+"&instant="+encodeURI(SUSISkill);
+    //hi";//"https://api.susi.ai/susi/chat.json";
     //url = "https://api.susi.ai/susi/chat.json";//?timezoneOffset=-480&q="+text;
-    //alert(text);    
+    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text+"&instant=What%20is%20%2A%20in%20%2A%20%7C%20%2A%20in%20%2A%20%0A%21console%3A%24ans%24%0A%7B%0A%20%20%22url%22%3A%22http%3A%2F%2Fandwhyjaycee.herokuapp.com%2Fapi%2Fsusi%3Flanguage%3D%242%24%26phrase%3D%241%24%22%2C%0A%20%20%22path%22%3A%22%24.ans%22%0A%7D%0Aeol";
+    alert(url);    
     console.log(url);
     document.getElementById("susioutput").innerHTML = "loading....";
     var xhttp = new XMLHttpRequest();

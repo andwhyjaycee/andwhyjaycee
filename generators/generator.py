@@ -14,5 +14,7 @@ while run:
             run = False
             break
     if run:wordMap.append(word)
+    if word[l] == "":del wordMap[-1]
+    
 print(wordMap)
     
