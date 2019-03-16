@@ -1,16 +1,18 @@
+data={};
 function RESTAPI(text){
-        url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text;
-        //alert(text);    
-        console.log("test");
+        url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q=hi"//+encodeURI(text);
+        alert(text);    
+        //console.log("test");
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
              if (this.readyState == 4 && this.status == 200) {
-                 languages = JSON.parse(this.responseText); 
+                 alert();
+                 data = JSOH.parse(this.responseText);
              }
         };
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send("Your JSON Data Here");
+        xhttp.send();//"Your JSON Data Here");
 
     };
     
@@ -40,19 +42,21 @@ function searchCheck(){
 }
 data={};
 function test(text){
-    url = "https://api.susi.ai/susi/chat.json";//?timezoneOffset=-480&q="+text;
+    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text;//hi";//"https://api.susi.ai/susi/chat.json";
+    //url = "https://api.susi.ai/susi/chat.json";//?timezoneOffset=-480&q="+text;
     //alert(text);    
-    console.log("test");
+    console.log(url);
+    document.getElementById("susioutput").innerHTML = "loading....";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
              //alert(this.responseText);
              data = this.responseText;
-             document.getElementById("intro").innerHTML = JSON.parse(data).answers[0].actions[0].expression; 
+             document.getElementById("susioutput").innerHTML = JSON.parse(data).answers[0].actions[0].expression; 
          }
     };
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send("?timezoneOffset=-480&q="+decodeURI(text));
+    xhttp.send();//"?timezoneOffset=-480&q="+decodeURI(text));
 
 };

@@ -24,17 +24,31 @@
     </style>
   
 <!-- Begin page content -->
+<div class="blackened">
+<div class="container">
+        <h1 class="mt-5 fancytext">SUSI</h1>
+        <span class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="SUSI" style="width:20em;" id="susi">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="lol" onclick='test(document.getElementById("susi").value);' >Search</button></span>
+      <br>
+      <p id="susioutput"></p>
+    </div>
+</div>
 <main role="main" class="flex-shrink-0">
+    
+    
   <div class="container">
     <h1 class="mt-5">Phrases</h1>
     <p class="lead">English phrases and their translations in indigenous languages</p>
+    
     
   <form class="form-inline" action="/search" onsubmit="return searchCheck();" method="post">
         <input class="form-control mr-sm-2" type="text" placeholder="Search phrase" name="phrase" id="search-phrase">
         <input class="form-control mr-sm-2" type="text" placeholder="Language" name="language" id="search-language">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-<button type="button" class="btn btn-light" id="minimisephrase">-</button><br>
+    <br>
+<button type="button" class="btn btn-light" id="minimisephrase">-</button><br><br>
   
   <table class="table" id="phraseslist">
   <thead>

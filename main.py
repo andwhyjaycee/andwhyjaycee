@@ -7,10 +7,10 @@ def index():
     return render_template('template.html',
                             content = render_template('main.html'))
 
-@app.route('/about')
-def about():
+@app.route('/why')
+def why():
     return render_template('template.html',
-                            content = render_template('about.html'))
+                            content = render_template('why.html'))
 '''
 # Naming and variables
 @app.route('/name/<name>/<int:score>')
@@ -89,9 +89,9 @@ def apiSUSI():
         givenPhrase = request.args.get('phrase')
         givenLanguage = request.args.get('language')
     found =  findPhrase(givenPhrase, givenLanguage)
-    if found == -1: return json.dumps({"ans":"Sorry, I Currently do not support this language."})
-    elif found == -2: return json.dumps({"ans":"Sorry, I currently do not know this phrase"})
-    else: return json.dumps({"ans":"The phrase "+givenPhrase+" in "+givenLanguage+" is "+found})
+    if found == -1: return json.dumps({"ans":{"ans":"Sorry, I Currently do not support this language."}})
+    elif found == -2: return json.dumps({"ans":{"ans":"Sorry, I currently do not know this phrase"}})
+    else: return json.dumps({"ans":{"ans":"The phrase "+givenPhrase+" in "+givenLanguage+" is "+found}})
 
 \
 '''  
