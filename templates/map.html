@@ -1,0 +1,24 @@
+<main role="main">
+    <style>
+        #chartdiv{
+           //width:100em;
+            height:40em;
+        }
+    </style>
+
+<div id="chartdiv"></div>
+<div id="info">
+  <p>This is an information that is displayed when the page loads</p>
+  <p>Hover on any highlighted country to display it's description</p>
+</div>
+   <!-- /container -->
+  
+
+
+
+</main>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='map.js') }}"></script>

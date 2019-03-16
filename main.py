@@ -25,6 +25,11 @@ def phrases():
                 words = [["one","lutti"],["two","otikko"]])
             )
 
+@app.route('/map')#,methods=['GET']) 
+def map():
+    return render_template('template.html',
+                content = render_template('map.html'))
+
 words = [{"English":"one","Miwok":"lutti"},
          {"English":"two","Miwok":"otikko"},
          {"English":"one","Miwok":"lutti"},
@@ -77,5 +82,5 @@ def apiSUSI():
             
 
 if __name__ == '__main__':
-        app.run(debug=True, use_reloader=True)
+        app.run( port=33507, debug=True, use_reloader=True)
 #app.run()#debug=True, host='0.0.0.0')
