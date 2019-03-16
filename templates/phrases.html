@@ -25,17 +25,21 @@
   
   <table class="table">
   <thead>
+
     <tr>
-      <th scope="col">English</th>
-      <th scope="col">Miwok</th>
+    {% for lang in languages %}
+        <th scope="col">{{lang}}</th>
+    {% endfor %}
     </tr>
+    
   </thead>
   <tbody id="words">
       
     {% for word in words %}
     <tr>
-        <td> {{ word[0] }} </td>
-        <td> {{ word[1] }} </td>
+        {% for lang in languages %}
+        <td> {{ word[lang] }} </td>
+        {% endfor %}
     </tr>
     {% endfor %}
     

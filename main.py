@@ -22,7 +22,8 @@ def hello(name,score):
 def phrases():
     return render_template('template.html',
                 content = render_template('phrases.html',
-                words = [["one","lutti"],["two","otikko"]])
+                words = words,
+                languages = languages)
             )
 
 @app.route('/map')#,methods=['GET']) 
@@ -39,6 +40,11 @@ words = [{"English":"one","Miwok":"lutti"},
 def api():
     return str(words)
 languages = ["English", "Miwok"]
+
+
+@app.route('/api/languages',methods=['POST', 'GET']) 
+def apiLang():
+    return str(languages)
 
 def findPhrase(givenPhrase, givenLanguage):
     if givenLanguage not in languages:
@@ -79,14 +85,17 @@ def apiSUSI():
     if found == -1: return "Sorry, I Currently do not support this language."
     elif found == -2: return "Sorry, I currently do not know this phrase"
     else: return "The phrase "+givenPhrase+" in "+givenLanguage+" is "+found
-            
+
+'''  
 import sys
 try:
     print(sys.argv[1])
     port = int(sys.argv[1])
 except:port=5000
+'''
 
 if __name__ == '__main__':
     #port = int(os.environ.get('PORT'))
-    app.run( port=port, debug=True, use_reloader=True)
+    app.run( debug=True, use_reloader=True)
 #app.run()#debug=True, host='0.0.0.0')
+
