@@ -9,7 +9,7 @@ var map = AmCharts.makeChart("chartdiv", {
 
   dataProvider: {
     map: "worldLow",
-    zoomLatitude: 46.214708,
+    zoomLatitude: 40,
     zoomLevel: 1,
     zoomLongitude: 10.347274,
     areas: areas
@@ -24,5 +24,7 @@ var map = AmCharts.makeChart("chartdiv", {
 
 map.addListener("clickMapObject",//rollOverMapObject", 
 function(event) {
-  document.getElementById("info").innerHTML = '<h2>' + event.mapObject.title + '</h2><p>' + event.mapObject.info + '</p>';
+  document.getElementById("infotitle").innerHTML = event.mapObject.title ;
+  document.getElementById("infolang").innerHTML = event.mapObject.info;
+  //document.getElementById("info").innerHTML = '<h1 class="fancytext">' + event.mapObject.title + '</h1><br><h4>' + event.mapObject.info + '</h4>';
 });

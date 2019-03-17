@@ -11,6 +11,10 @@ def index():
 def why():
     return render_template('template.html',
                             content = render_template('why.html'))
+@app.route('/about')
+def about():
+    return render_template('template.html',
+                            content = render_template('about.html'))
 '''
 # Naming and variables
 @app.route('/name/<name>/<int:score>')

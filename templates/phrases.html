@@ -21,17 +21,24 @@
           flex-flow: row wrap;
           align-items: center;
         }
+        #minimisephrase{
+            font-size:1.25em;}
     </style>
   
 <!-- Begin page content -->
 <div class="blackened">
 <div class="container">
-        <h1 class="mt-5 fancytext">SUSI</h1>
+        <h1 class="mt-5 fancytext">SUSI.AI</h1>
         <span class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="SUSI" style="width:20em;" id="susi">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="lol" onclick='test(document.getElementById("susi").value);' >Search</button></span>
+        <input class="form-control mr-sm-2" type="text" placeholder="SUSI.AI" style="width:20em;" id="susi">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="susisend" onclick='test(document.getElementById("susi").value);' >Send</button></span>
       <br>
-      <p id="susioutput"></p>
+      <p id="susioutput">Ask any question about indigenous languages.
+      Some Questions you can ask are:<br>
+      1. What is uncle in ainu<br>
+      2. Give me a word/ Random word<br>
+      3. Give me a fun fact<br>
+      </p>
     </div>
 </div>
 <main role="main" class="flex-shrink-0">
@@ -48,7 +55,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <br>
-<button type="button" class="btn btn-light" id="minimisephrase">-</button><br><br>
+<button type="button" class="btn btn-light font-weight-bold" id="minimisephrase">-</button><br><br>
   
   <table class="table" id="phraseslist">
   <thead>

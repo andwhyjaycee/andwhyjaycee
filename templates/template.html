@@ -13,6 +13,7 @@
       body {
            //font-family: "Calibri Light", Calibri; 
            font-weight: 300;
+           font-size:1.125em;
            
         }
       .bd-placeholder-img {
@@ -40,8 +41,8 @@
           padding-top:2em;
           padding-bottom:2em;
       }
-      .container{padding-top:2em;}
-      .fancytext{
+      .container{padding-top:2em;padding-bottom:2em;}
+      .fancytext,h1{
             background: linear-gradient( blue 0%, purple 60%);
             //background: linear-gradient( LightBlue 10%, #ca1cca 60%);
             -webkit-background-clip: text;
@@ -58,7 +59,8 @@
 {{ content | safe}}
 
 <footer class="container">
-  <a href="https://github.com/andwhyjaycee"><p>© AndWhyJayCee 2017-2019</p></a>
+  <a href="/about">© AndWhyJayCee 2019</a>
+  <a href="https://github.com/andwhyjaycee"><img style="width:1em;height:1em;" src="{{ url_for('static', filename='GitHub-Mark-64px.png') }}" alt"Github"></a>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
