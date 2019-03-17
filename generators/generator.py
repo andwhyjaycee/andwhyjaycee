@@ -13,6 +13,7 @@ while run:
         if word[l]=="-1":
             run = False
             break
+        if word[l][-1]==" ":word[l] = word[l][:-1]
     if run:wordMap.append(word)
     if word[l] == "":del wordMap[-1]
     
