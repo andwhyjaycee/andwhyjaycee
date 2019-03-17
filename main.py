@@ -99,6 +99,7 @@ def apiSUSI():
     elif found == -2: return json.dumps({"ans":{"ans":"Sorry, I currently do not know this phrase"}})
     else: return json.dumps({"ans":{"ans":"The phrase \""+givenPhrase+"\" in "+givenLanguage+" is \""+found+"\""}})
 
+
 from random import randint
 @app.route('/api/susi/random', methods=['POST', 'GET']) 
 def apiRandom():
@@ -107,6 +108,22 @@ def apiRandom():
     
     return json.dumps({"ans":{"ans":\
     "Did you know that \""+words[index]["English"]+"\" in "+lang+" is \""+words[index][lang]+"\"?"}})
+
+@app.route('/api/susi/conversation', methods=['POST', 'GET']) 
+def apiSUSIConversation():
+    replies = ["Me Too!", "Really?"]
+    reply = replies[randint(0,len(replies)-1)]
+    
+    if request.method=='POST':
+        givenPhrase = request.form['phrase']
+        givenLanguage = request.form['language']
+    if request.method=='GET':
+        givenPhrase = request.args.get('phrase')
+        givenLanguage = request.args.get('language')
+    found =  findPhrase(givenPhrase, givenLanguage)
+    if found == -1 or found == -2: return json.dumps({"ans":{"ans":reply}})
+    else: return json.dumps({"ans":{"ans":reply+\
+    " Did you know that \""+givenPhrase+"\" in "+givenLanguage+" is \""+found+"\"?"}})
 
 '''  
 import sys
