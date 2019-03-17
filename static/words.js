@@ -31,13 +31,22 @@ What is * in * | * in *
   "path":"$.ans"
 }
 eol
+
+Give me a word | Random word
+!console:$ans$
+{
+  "url":"http://andwhyjaycee.herokuapp.com/api/susi/random",
+  "path":"$.ans"
+}
+eol
 `;
-//Use URL encoder to encode SUSI Skill
+SUSISkillEncoded = 'What%20is%20%2A%20in%20%2A%20%7C%20%2A%20in%20%2A%20%0A%21console%3A%24ans%24%0A%7B%0A%20%20%22url%22%3A%22http%3A%2F%2Fandwhyjaycee.herokuapp.com%2Fapi%2Fsusi%3Flanguage%3D%242%24%26phrase%3D%241%24%22%2C%0A%20%20%22path%22%3A%22%24.ans%22%0A%7D%0Aeol%0A%0AGive%20me%20a%20word%20%7C%20Random%20word%0A%21console%3A%24ans%24%0A%7B%0A%20%20%22url%22%3A%22http%3A%2F%2Fandwhyjaycee.herokuapp.com%2Fapi%2Fsusi%2Frandom%22%2C%0A%20%20%22path%22%3A%22%24.ans%22%0A%7D%0Aeol';
+//Use URL encoder to encode SUSI Skill https://www.urlencoder.org/
 function test(text){
     url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+encodeURI(text)+"&instant="+encodeURI(SUSISkill);
     //hi";//"https://api.susi.ai/susi/chat.json";
     //url = "https://api.susi.ai/susi/chat.json";//?timezoneOffset=-480&q="+text;
-    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text+"&instant=What%20is%20%2A%20in%20%2A%20%7C%20%2A%20in%20%2A%20%0A%21console%3A%24ans%24%0A%7B%0A%20%20%22url%22%3A%22http%3A%2F%2Fandwhyjaycee.herokuapp.com%2Fapi%2Fsusi%3Flanguage%3D%242%24%26phrase%3D%241%24%22%2C%0A%20%20%22path%22%3A%22%24.ans%22%0A%7D%0Aeol";
+    url = "https://api.susi.ai/susi/chat.json?timezoneOffset=-480&q="+text+"&instant="+SUSISkillEncoded;
     //alert(url);    
     console.log(url);
     document.getElementById("susioutput").innerHTML = "loading....";

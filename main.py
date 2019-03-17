@@ -45,7 +45,6 @@ def map():
 @app.route('/api',methods=['POST', 'GET']) 
 def api():
     return str(words)
-
 @app.route('/api/languages',methods=['POST', 'GET']) 
 def apiLang():
     return str(languages)
@@ -94,9 +93,17 @@ def apiSUSI():
     found =  findPhrase(givenPhrase, givenLanguage)
     if found == -1: return json.dumps({"ans":{"ans":"Sorry, I Currently do not support this language."}})
     elif found == -2: return json.dumps({"ans":{"ans":"Sorry, I currently do not know this phrase"}})
-    else: return json.dumps({"ans":{"ans":"The phrase "+givenPhrase+" in "+givenLanguage+" is "+found}})
+    else: return json.dumps({"ans":{"ans":"The phrase \""+givenPhrase+"\" in "+givenLanguage+" is \""+found+"\""}})
 
-\
+from random import randint
+@app.route('/api/susi/random', methods=['POST', 'GET']) 
+def apiRandom():
+    index = randint(0,len(words)-1)
+    lang = languages[randint(1,len(languages)-1)]
+    
+    return json.dumps({"ans":{"ans":\
+    "Did you know that \""+words[index]["English"]+"\" in "+lang+" is \""+words[index][lang]+"\"?"}})
+
 '''  
 import sys
 try:
