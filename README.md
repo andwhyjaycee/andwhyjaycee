@@ -8,3 +8,5 @@ AndWhyJayCee is a website to help know more about the condition of indigenous la
 This is basically a Python Flask web app. HTML, CSS, Bootstrap is used to Style the app. AMCharts 3 is used for the map. Javascript is used to interact with the SUSI API and for some interactivity. Flask is used to host and template the webpage, along with provide some APIs for use with SUSI skills
 
 It is currently deployed on Heroku at andwhyjaycee.herokuapp.com
+
+https://devpost.com/software/andwhyjaycee 
